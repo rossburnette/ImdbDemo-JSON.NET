@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Web.Script.Serialization;
+using Newtonsoft.Json;
 
 namespace ImdbDemo
 {
@@ -50,21 +51,21 @@ namespace ImdbDemo
             using (WebClient wc = new WebClient())
             {
                 var json = wc.DownloadString(url);
-                JavaScriptSerializer oJS = new JavaScriptSerializer();
-                ImdbEntity obj = new ImdbEntity();
-                obj = oJS.Deserialize<ImdbEntity>(json);
-                if (obj.Response == "True")
+                ImdbEntity jsonArray = JsonConvert.DeserializeObject<ImdbEntity>(json);
+                
+                
+                if (jsonArray.Response == "True")
                 {
-                    lblActor.Text = obj.Actors;
-                    lblDirector.Text = obj.Director;
-                    lblImdbRating.Text = obj.imdbRating;
-                    lblGenre.Text = obj.Genre;
-                    lblYear.Text = obj.Year;
-                    lblPlot.Text = obj.Plot;
-                    lblRating.Text = obj.Rated;
-                    lblAwards.Text = obj.Awards;
-                    lblRuntime.Text = obj.Runtime;
-                    picMoviePoster.ImageLocation = obj.Poster;
+                    lblActor.Text = jsonArray.Actors;
+                    lblDirector.Text = jsonArray.Director;
+                    lblImdbRating.Text = jsonArray.imdbRating;
+                    lblGenre.Text = jsonArray.Genre;
+                    lblYear.Text = jsonArray.Year;
+                    lblPlot.Text = jsonArray.Plot;
+                    lblRating.Text = jsonArray.Rated;
+                    lblAwards.Text = jsonArray.Awards;
+                    lblRuntime.Text = jsonArray.Runtime;
+                    picMoviePoster.ImageLocation = jsonArray.Poster;
 
                 }
                 else
@@ -82,8 +83,8 @@ namespace ImdbDemo
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AboutBox1 obj = new AboutBox1();
-            obj.ShowDialog();
+            AboutBox1 jsonArray = new AboutBox1();
+            jsonArray.ShowDialog();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
