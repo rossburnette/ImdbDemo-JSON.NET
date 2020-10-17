@@ -132,6 +132,7 @@
   <ItemGroup>
     <Content Include="Film.ico" />
     <Content Include="Film_60.ico" />
+    <Content Include="Resources\JSON.Net-PerformanceIncreaseChart-resized.png" />
     <Content Include="Resources\JSON.Net-PerformanceIncreaseChart.png" />
     <None Include="Resources\download.jpg" />
     <None Include="Resources\Film_60.ico" />
